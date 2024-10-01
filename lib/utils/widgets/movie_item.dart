@@ -65,7 +65,7 @@ class MovieItem extends StatelessWidget {
               Row(
                 children: [
                   SvgPicture.asset(
-                    AppAssets.imgCalendarBlankk,
+                    AppAssets.imgCalendarBlank,
                     width: 20,
                   ),
                   const Gap(5),
