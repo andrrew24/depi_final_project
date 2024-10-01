@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/config/theme/app_color.dart';
-import 'package:movie_app/config/constants/assets.dart';
+import 'package:movie_app/config/constants/app_assets.dart';
 import 'package:movie_app/features/home/views/home_view.dart';
 import 'package:movie_app/features/search/views/search_view.dart';
 import 'package:movie_app/features/watch_list/views/watch_list_view.dart';
@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
         items: [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              Assets.imgHome,
+              AppAssets.imgHome,
               colorFilter: ColorFilter.mode(
                   _selectedIndex == 0
                       ? AppColor.activeColor
@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              Assets.imgSearch,
+              AppAssets.imgSearch,
               colorFilter: ColorFilter.mode(
                   _selectedIndex == 1
                       ? AppColor.activeColor
@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              Assets.imgSaveOutlined,
+              AppAssets.imgSaveOutlined,
               colorFilter: ColorFilter.mode(
                   _selectedIndex == 2
                       ? AppColor.activeColor

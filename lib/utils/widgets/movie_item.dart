@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:movie_app/config/constants/assets.dart';
+import 'package:movie_app/config/constants/app_assets.dart';
 import 'package:movie_app/config/theme/app_styles.dart';
 
 class MovieItem extends StatelessWidget {
@@ -22,7 +22,7 @@ class MovieItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 image: const DecorationImage(
                     fit: BoxFit.fitHeight,
-                    image: AssetImage(Assets.imgDefaultmovieimg))),
+                    image: AssetImage(AppAssets.imgDefaultmovieimg))),
           ),
           const Gap(20),
           Column(
@@ -37,7 +37,7 @@ class MovieItem extends StatelessWidget {
               Row(
                 children: [
                   SvgPicture.asset(
-                    Assets.imgStar,
+                    AppAssets.imgStar,
                     width: 20,
                   ),
                   const Gap(5),
@@ -51,7 +51,7 @@ class MovieItem extends StatelessWidget {
               Row(
                 children: [
                   SvgPicture.asset(
-                    Assets.imgTicket,
+                    AppAssets.imgTicket,
                     width: 20,
                   ),
                   const Gap(5),
@@ -65,7 +65,7 @@ class MovieItem extends StatelessWidget {
               Row(
                 children: [
                   SvgPicture.asset(
-                    Assets.imgCalendarBlank,
+                    AppAssets.imgCalendarBlank,
                     width: 20,
                   ),
                   const Gap(5),
@@ -79,7 +79,7 @@ class MovieItem extends StatelessWidget {
               Row(
                 children: [
                   SvgPicture.asset(
-                    Assets.imgClock,
+                    AppAssets.imgClock,
                     width: 20,
                   ),
                   const Gap(5),

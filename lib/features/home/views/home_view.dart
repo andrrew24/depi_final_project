@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movie_app/config/constants/assets.dart';
+import 'package:movie_app/config/constants/app_assets.dart';
 import 'package:movie_app/config/theme/app_styles.dart';
 import 'package:movie_app/utils/widgets/basic_app_bar.dart';
 import 'package:movie_app/utils/widgets/movie_item.dart';
