@@ -4,9 +4,9 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BasicAppBar({
     super.key,
     this.title,
-     this.leadinIcon,
+    this.leadinIcon,
     required this.hasBG,
-     this.leadingonPressed,
+    this.leadingonPressed,
     this.trailingIcon,
     this.trailingonPressed,
   });

@@ -8,7 +8,7 @@ void main() {
   runApp(const MoviesApp());
 
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: AppColor.appBackgroundColor));
+      const SystemUiOverlayStyle(statusBarColor: AppColor.appBackgroundColor));
 }
 
 class MoviesApp extends StatelessWidget {

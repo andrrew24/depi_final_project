@@ -16,7 +16,7 @@ class WatchListView extends StatelessWidget {
           style: AppStyles.styleMontserratRegular16(),
         ),
       ),
-      body: Center(
+      body: const Center(
         child: Text("WatchListView"),
       ),
     );
