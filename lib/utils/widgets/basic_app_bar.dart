@@ -4,11 +4,12 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BasicAppBar({
     super.key,
     this.title,
-     this.leadinIcon,
+    this.leadinIcon,
     required this.hasBG,
-     this.leadingonPressed,
+    this.leadingonPressed,
     this.trailingIcon,
     this.trailingonPressed,
+    this.image,
   });
 
   final Widget? title;
@@ -17,7 +18,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool hasBG;
   final void Function()? leadingonPressed;
   final void Function()? trailingonPressed;
-
+  final Image? image;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -30,7 +31,8 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
                   trailingIcon,
                   color: Colors.white,
                   size: 20,
-                ))
+                ),
+              ),
       ],
       backgroundColor: Colors.transparent,
       centerTitle: true,

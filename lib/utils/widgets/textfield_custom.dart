@@ -16,8 +16,8 @@ class CustomTextfield extends StatelessWidget {
       cursorColor: Colors.white,
       decoration: InputDecoration(
           contentPadding:
-              EdgeInsets.symmetric(horizontal: 24, vertical: 15),
-          suffixIcon: Icon(Icons.search_outlined),
+              const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
+          suffixIcon: const Icon(Icons.search_outlined),
           hintText: "Search",
           hintStyle: AppStyles.stylePoppinsRegular14(),
           filled: true,

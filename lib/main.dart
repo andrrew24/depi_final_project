@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:movie_app/config/theme/app_color.dart';
 import 'package:movie_app/config/theme/theme.dart';
-import 'package:movie_app/features/home/views/home.dart';
+import 'package:movie_app/features/details/views/details_view.dart';
 
 void main() {
   runApp(const MoviesApp());
 
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: AppColor.appBackgroundColor));
+      const SystemUiOverlayStyle(statusBarColor: AppColor.appBackgroundColor));
 }
 
 class MoviesApp extends StatelessWidget {
@@ -19,7 +19,7 @@ class MoviesApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
-      home: const Home(),
+      home: const DetailsView(),
     );
   }
 }

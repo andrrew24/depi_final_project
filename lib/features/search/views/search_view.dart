@@ -23,15 +23,15 @@ class SearchView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
-              Gap(36),
+              const Gap(36),
               CustomTextfield(textEditingController: TextEditingController()),
-              Gap(24),
+              const Gap(24),
               Expanded(
                 child: ListView.separated(
                   itemCount: 4,
-                  separatorBuilder: (context, index) => Gap(10),
+                  separatorBuilder: (context, index) => const Gap(10),
                   itemBuilder: (context, index) {
-                    return MovieItem();
+                    return const MovieItem();
                   },
                 ),
               )
