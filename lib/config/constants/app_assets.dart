@@ -4,7 +4,7 @@ class AppAssets {
 
   /// Assets for imgCalendarBlank
   /// assets/img/CalendarBlank.svg
-  static const String imgCalendarBlankk = "assets/img/CalendarBlank.svg";
+  static const String imgCalendarBlank = "assets/img/CalendarBlank.svg";
 
   /// Assets for imgClock
   /// assets/img/Clock.svg
