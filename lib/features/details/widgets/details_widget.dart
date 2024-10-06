@@ -21,12 +21,12 @@ class DetailsWidget extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               Container(
-                margin: EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 10),
                 width: double.infinity,
                 height: 250,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                         fit: BoxFit.cover,
                         image:
                             AssetImage(AppAssets.imgDefaultmoviebackground))),
@@ -43,11 +43,11 @@ class DetailsWidget extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 5),
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Row(
                         children: [
                           SvgPicture.asset(AppAssets.imgStar),
-                          Gap(5),
+                          const Gap(5),
                           Text(
                             "9.5",
                             style: AppStyles.styleMontserratSemiBold12()
@@ -74,28 +74,28 @@ class DetailsWidget extends StatelessWidget {
                           width: 100,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
-                              image: DecorationImage(
+                              image: const DecorationImage(
                                   fit: BoxFit.fill,
                                   image: AssetImage(
                                       AppAssets.imgDefaultmovieimg))),
                         ),
-                        Gap(12),
+                        const Gap(12),
                         Text(
                           "Spiderman No Way Home",
                           style: AppStyles.stylePoppinsSemiBold18(),
                         )
                       ],
                     ),
-                    Gap(25),
-                    Details(),
+                    const Gap(25),
+                    const Details(),
                   ],
                 ),
               )
             ],
           ),
         ),
-        Gap(160),
-        Expanded(
+        const Gap(160),
+        const Expanded(
           child: TabBarCustom(),
         )
       ],
