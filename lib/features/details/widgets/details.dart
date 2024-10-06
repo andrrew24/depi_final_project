@@ -11,7 +11,7 @@ class Details extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SvgPicture.asset(AppAssets.imgCalendarBlankk),
+        SvgPicture.asset(AppAssets.imgCalendarBlank),
         Text(
           ' 2021 | ',
           style: AppStyles.styleMontserratMeddium12(),

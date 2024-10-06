@@ -18,7 +18,7 @@ class DetailsView extends StatelessWidget {
         ),
         trailingIcon: FontAwesomeIcons.solidBookmark,
       ),
-      body: DetailsWidget(),
+      body: const DetailsWidget(),
     );
   }
 }
