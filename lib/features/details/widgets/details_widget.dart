@@ -102,9 +102,3 @@ class DetailsWidget extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
