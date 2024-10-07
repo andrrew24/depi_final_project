@@ -17,7 +17,7 @@ class NetworkService {
   Future<MovieDetailsResponseDto> getMovieById(int id) async {
     try {
       final response = await _dio.get('/movie/$id');
-      return response.data;
+      return MovieDetailsResponseDto.fromJson(response.data);
     } catch (error) {
       print('Error fetching movie by ID: $error');
       rethrow;
@@ -28,11 +28,12 @@ class NetworkService {
   Future<TrendingMoviesResponseDto> getTrendingMovies() async {
     try {
       final response = await _dio.get('/trending/movie/week');
-      return response.data;
+      return TrendingMoviesResponseDto.fromJson(response.data);
     } catch (error) {
       print('Error fetching trending movies: $error');
       rethrow;
     }
   }
 }
+
 // Dio Api Service
