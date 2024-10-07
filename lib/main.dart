@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/config/theme/app_color.dart';
 import 'package:movie_app/config/theme/theme.dart';
 import 'package:movie_app/features/details/views/details_view.dart';
 
-void main() {
+void main() async {
+  // load variables in .env file (placed in the root project folder)
+  await dotenv.load(fileName: ".env");
+
   runApp(const MoviesApp());
 
   SystemChrome.setSystemUIOverlayStyle(
