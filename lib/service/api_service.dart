@@ -14,10 +14,10 @@ class NetworkService {
   }
 
   /// to get Movie By its id when user clicks on any movie item
-  Future<MovieDetailsResponseDTO> getMovieById(int id) async {
+  Future<MovieDetailsResponseDto> getMovieById(int id) async {
     try {
       final response = await _dio.get('/movie/$id');
-      return MovieDetailsResponseDTO.fromJson(response.data);
+      return MovieDetailsResponseDto.fromJson(response.data);
     } catch (error) {
       print('Error fetching movie by ID: $error');
       rethrow;
