@@ -38,4 +38,5 @@ class NetworkService {
     }
   }
 }
+
 // Dio Api Service
