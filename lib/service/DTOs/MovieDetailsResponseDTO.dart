@@ -1,8 +1,8 @@
 import 'dart:convert';
-MovieDetailsResponseDto movieDetailsResponseDtoFromJson(String str) => MovieDetailsResponseDto.fromJson(json.decode(str));
-String movieDetailsResponseDtoToJson(MovieDetailsResponseDto data) => json.encode(data.toJson());
-class MovieDetailsResponseDto {
-  MovieDetailsResponseDto({
+MovieDetailsResponseDTO movieDetailsResponseDtoFromJson(String str) => MovieDetailsResponseDTO.fromJson(json.decode(str));
+String movieDetailsResponseDtoToJson(MovieDetailsResponseDTO data) => json.encode(data.toJson());
+class MovieDetailsResponseDTO {
+  MovieDetailsResponseDTO({
       this.adult, 
       this.backdropPath, 
       this.belongsToCollection, 
@@ -30,7 +30,7 @@ class MovieDetailsResponseDto {
       this.voteAverage, 
       this.voteCount,});
 
-  MovieDetailsResponseDto.fromJson(dynamic json) {
+  MovieDetailsResponseDTO.fromJson(dynamic json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     belongsToCollection = json['belongs_to_collection'] != null ? BelongsToCollection.fromJson(json['belongs_to_collection']) : null;
@@ -104,7 +104,7 @@ class MovieDetailsResponseDto {
   bool? video;
   double? voteAverage;
   int? voteCount;
-MovieDetailsResponseDto copyWith({  bool? adult,
+MovieDetailsResponseDTO copyWith({  bool? adult,
   String? backdropPath,
   BelongsToCollection? belongsToCollection,
   int? budget,
@@ -130,7 +130,7 @@ MovieDetailsResponseDto copyWith({  bool? adult,
   bool? video,
   double? voteAverage,
   int? voteCount,
-}) => MovieDetailsResponseDto(  adult: adult ?? this.adult,
+}) => MovieDetailsResponseDTO(  adult: adult ?? this.adult,
   backdropPath: backdropPath ?? this.backdropPath,
   belongsToCollection: belongsToCollection ?? this.belongsToCollection,
   budget: budget ?? this.budget,
