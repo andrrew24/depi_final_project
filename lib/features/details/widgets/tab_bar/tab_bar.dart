@@ -19,7 +19,7 @@ class TabBarCustom extends StatelessWidget {
             labelColor: Colors.white,
             unselectedLabelColor: Colors.grey,
             labelStyle: AppStyles.stylePoppinsRegular14(),
-            tabs:  const [
+            tabs: const [
               Tab(text: 'About Movie'),
               Tab(text: 'Reviews'),
               Tab(text: 'Cast'),

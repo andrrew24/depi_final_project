@@ -48,3 +48,6 @@ app.*.map.json
 # Do not remove or rename entries in this file, only add new ones
 # See https://github.com/flutter/flutter/issues/128635 for more context.
 
+# environment variables like api keys
+.env
+
