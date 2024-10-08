@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/features/details/models/movie_details_model/movie_details_model.dart';
-import 'package:movie_app/features/home/models/trending_movies_model.dart';
+import 'package:movie_app/features/home/models/movies_model.dart';
 import 'package:movie_app/service/DTOs/MovieDetailsResponseDTO.dart';
 import 'package:movie_app/service/DTOs/TrendingMoviesResponseDTO.dart';
 
