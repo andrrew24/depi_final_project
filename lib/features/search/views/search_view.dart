@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:movie_app/config/theme/app_styles.dart';
+import 'package:movie_app/features/search/viewmodels/cubit/search_cubit.dart';
+import 'package:movie_app/features/search/widgets/search_initial_widget.dart';
+import 'package:movie_app/features/search/widgets/search_no_result_widget.dart';
 import 'package:movie_app/utils/widgets/basic_app_bar.dart';
 import 'package:movie_app/utils/widgets/movie_item.dart';
 import 'package:movie_app/utils/widgets/textfield_custom.dart';
@@ -19,24 +23,45 @@ class SearchView extends StatelessWidget {
             style: AppStyles.styleMontserratRegular16(),
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            children: [
-              const Gap(36),
-              CustomTextfield(textEditingController: TextEditingController()),
-              const Gap(24),
-              Expanded(
-                child: ListView.separated(
-                  itemCount: 4,
-                  separatorBuilder: (context, index) => const Gap(10),
-                  itemBuilder: (context, index) {
-                    return const MovieItem();
-                  },
-                ),
-              )
-            ],
-          ),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: CustomTextfield(
+                textEditingController: TextEditingController(),
+                onSubmit: (value) {
+                  BlocProvider.of<SearchCubit>(context)
+                      .searchMovieByName(value);
+                },
+              ),
+            ),
+            const Gap(5),
+            Expanded(
+              child: BlocBuilder<SearchCubit, SearchState>(
+                builder: (context, state) {
+                  if (state is SearchSuccess) {
+                    return ListView.separated(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      itemCount: state.movies.length,
+                      separatorBuilder: (context, index) => const Gap(10),
+                      itemBuilder: (context, index) {
+                        return MovieItem(
+                          moviesModel: state.movies[index],
+                        );
+                      },
+                    );
+                  } else if (state is SearchLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is SearchFailure) {
+                    return const SearchNoResultWidget();
+                  } else if (state is SearchInitial) {
+                    return const SearchInitialWidget();
+                  }
+                  return Container();
+                },
+              ),
+            )
+          ],
         ));
   }
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class AppAssets {
   AppAssets._();
-
+  
   /// Assets for imgCalendarBlank
   /// assets/img/CalendarBlank.svg
   static const String imgCalendarBlank = "assets/img/CalendarBlank.svg";
@@ -10,10 +10,13 @@ class AppAssets {
   /// assets/img/Clock.svg
   static const String imgClock = "assets/img/Clock.svg";
 
+  /// Assets for imgDefaultactorimage
+  /// assets/img/defaultactorimage.png
+  static const String imgDefaultactorimage = "assets/img/defaultactorimage.png";
+
   /// Assets for imgDefaultmoviebackground
   /// assets/img/defaultmoviebackground.png
-  static const String imgDefaultmoviebackground =
-      "assets/img/defaultmoviebackground.png";
+  static const String imgDefaultmoviebackground = "assets/img/defaultmoviebackground.png";
 
   /// Assets for imgDefaultmovieimg
   /// assets/img/defaultmovieimg.png
@@ -27,6 +30,10 @@ class AppAssets {
   /// assets/img/magicbox.svg
   static const String imgMagicbox = "assets/img/magicbox.svg";
 
+  /// Assets for imgNoimgpreview
+  /// assets/img/noimgpreview.svg
+  static const String imgNoimgpreview = "assets/img/noimgpreview.svg";
+
   /// Assets for imgNoresults
   /// assets/img/noresults.svg
   static const String imgNoresults = "assets/img/noresults.svg";
@@ -37,7 +44,7 @@ class AppAssets {
 
   /// Assets for imgSave
   /// assets/img/save.svg
-  static const String imgSaveOutlined = "assets/img/save.svg";
+  static const String imgSave = "assets/img/save.svg";
 
   /// Assets for imgSearch
   /// assets/img/search.svg
@@ -50,4 +57,9 @@ class AppAssets {
   /// Assets for imgTicket
   /// assets/img/Ticket.svg
   static const String imgTicket = "assets/img/Ticket.svg";
+
+  /// Assets for imgUserReviewimage
+  /// assets/img/userReviewimage.png
+  static const String imgUserReviewimage = "assets/img/userReviewimage.png";
 }
+
