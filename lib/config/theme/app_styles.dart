@@ -57,8 +57,8 @@ class AppStyles {
 
   static TextStyle styleMontserratSemiBold16() {
     return GoogleFonts.poppins(
-      fontSize: 12,
-      fontWeight: FontWeight.w600,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
     );
   }
 

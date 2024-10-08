@@ -3,7 +3,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/config/service_locator/service_locator.dart';
 import 'package:movie_app/config/theme/theme.dart';
 import 'package:movie_app/features/home/views/home.dart';
-import 'package:movie_app/service/api_service.dart';
 
 void main() async {
   // load variables in .env file (placed in the root project folder)
