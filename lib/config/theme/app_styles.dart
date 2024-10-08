@@ -75,4 +75,7 @@ class AppStyles {
     );
   }
 
+  static TextStyle stylePoppinsRegular15() {
+    return GoogleFonts.poppins(fontSize: 15);
+  }
 }
