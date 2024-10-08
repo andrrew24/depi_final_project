@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/features/details/models/movie_details_model/movie_details_model.dart';
@@ -20,7 +22,7 @@ class NetworkService {
       final response = await _dio.get('/movie/$id');
       return MovieDetailsModel.fromJson(response.data);
     } catch (error) {
-      print('Error fetching movie by ID: $error');
+      log('Error fetching movie by ID: $error');
       rethrow;
     }
   }
@@ -37,7 +39,7 @@ class NetworkService {
 
       return movies;
     } catch (error) {
-      print('Error fetching home movies: $error');
+      log('Error fetching home TrendingMovies: $error');
       rethrow;
     }
   }
@@ -61,10 +63,40 @@ class NetworkService {
 
       return movies;
     } catch (error) {
-      print('Error fetching home movies: $error');
+      log('Error fetching home MoviesByCategory: $error');
       rethrow;
     }
   }
+
+  /// to Search List of Movies with a keyword
+  Future<List<MoviesModel>> searchMovieByKeyword(
+      {required String keyword}) async {
+    try {
+      final List<MoviesModel> movies = [];
+
+      final incomingMovies = await _dio.get(
+        '/search/movie',
+        queryParameters: {
+          'query': keyword,
+        },
+      );
+
+      for (var movie in incomingMovies.data['results']) {
+        movies.add(MoviesModel.fromJson(movie));
+      }
+
+      return movies;
+    } catch (error) {
+      log('Error fetching search MovieByKeyword: $error');
+      rethrow;
+    }
+  }
+
+  //TODO: Add get Movie's Cast
+
+  //TODO: Add get Movie's Review
+
+  
 }
 
 // Dio Api Service
