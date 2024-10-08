@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/features/details/models/movie_details_model/movie_details_model.dart';
-import 'package:movie_app/features/home/models/trending_movies_model.dart';
-import 'package:movie_app/service/DTOs/MovieDetailsResponseDTO.dart';
-import 'package:movie_app/service/DTOs/TrendingMoviesResponseDTO.dart';
+import 'package:movie_app/features/home/models/movies_model.dart';
 
 class NetworkService {
   final Dio _dio = Dio();
@@ -33,7 +31,31 @@ class NetworkService {
       final List<MoviesModel> movies = [];
       final incomingMovies = await _dio.get('/trending/movie/week');
 
-      for (var movie in incomingMovies.data) {
+      for (var movie in incomingMovies.data['results']) {
+        movies.add(MoviesModel.fromJson(movie));
+      }
+
+      return movies;
+    } catch (error) {
+      print('Error fetching home movies: $error');
+      rethrow;
+    }
+  }
+
+  /// to get List of upcoming, now playing , top rated and popular Categories with diff endpoint
+  /// endpoints
+  /// 1-  upcoming
+  /// 2-  top_rated
+  /// 3-  now_playing
+  /// 4-  popular
+  Future<List<MoviesModel>> getMoviesByCategory(
+      {required String endpoint}) async {
+    try {
+      final List<MoviesModel> movies = [];
+
+      final incomingMovies = await _dio.get('/movie/$endpoint');
+
+      for (var movie in incomingMovies.data['results']) {
         movies.add(MoviesModel.fromJson(movie));
       }
 
