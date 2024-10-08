@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-BelongsToCollection belongsToCollectionFromJson(String str) => BelongsToCollection.fromJson(json.decode(str));
+BelongsToCollection belongsToCollectionFromJson(String str) =>
+BelongsToCollection.fromJson(json.decode(str));
 String belongsToCollectionToJson(BelongsToCollection data) => json.encode(data.toJson());
 class BelongsToCollection {
   BelongsToCollection({
@@ -19,15 +20,18 @@ class BelongsToCollection {
   String? name;
   String? posterPath;
   String? backdropPath;
-BelongsToCollection copyWith({  int? id,
-  String? name,
-  String? posterPath,
-  String? backdropPath,
-}) => BelongsToCollection(  id: id ?? this.id,
-  name: name ?? this.name,
-  posterPath: posterPath ?? this.posterPath,
-  backdropPath: backdropPath ?? this.backdropPath,
-);
+  BelongsToCollection copyWith({
+    int? id,
+    String? name,
+    String? posterPath,
+    String? backdropPath,
+  }) =>
+      BelongsToCollection(
+        id: id ?? this.id,
+        name: name ?? this.name,
+        posterPath: posterPath ?? this.posterPath,
+        backdropPath: backdropPath ?? this.backdropPath,
+      );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
@@ -36,5 +40,4 @@ BelongsToCollection copyWith({  int? id,
     map['backdrop_path'] = backdropPath;
     return map;
   }
-
 }

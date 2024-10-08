@@ -31,13 +31,13 @@ dependencies:
   dio: ^5.7.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.6
+  flutter_dotenv: ^5.0.2
   flutter_svg: ^2.0.10+1
   font_awesome_flutter: ^10.7.0
   gap: ^3.0.1
   get_it: ^8.0.0
   google_fonts: ^6.2.1
-#  to use dot-env file to store api key
-  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_lints: ^4.0.0
