@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:movie_app/config/theme/app_styles.dart';
 import 'package:movie_app/features/search/viewmodels/cubit/search_cubit.dart';
+import 'package:movie_app/features/search/widgets/search_initial_widget.dart';
 import 'package:movie_app/features/search/widgets/search_no_result_widget.dart';
 import 'package:movie_app/utils/widgets/basic_app_bar.dart';
 import 'package:movie_app/utils/widgets/movie_item.dart';
@@ -53,6 +54,8 @@ class SearchView extends StatelessWidget {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is SearchFailure) {
                     return const SearchNoResultWidget();
+                  } else if (state is SearchInitial) {
+                    return const SearchInitialWidget();
                   }
                   return Container();
                 },
@@ -62,4 +65,3 @@ class SearchView extends StatelessWidget {
         ));
   }
 }
-
