@@ -1,7 +1,9 @@
 import 'dart:developer';
 
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:movie_app/config/errors/failure.dart';
 import 'package:movie_app/features/details/models/movie_details_model/movie_details_model.dart';
 import 'package:movie_app/features/home/models/movies_model.dart';
 
@@ -69,7 +71,7 @@ class NetworkService {
   }
 
   /// to Search List of Movies with a keyword
-  Future<List<MoviesModel>> searchMovieByKeyword(
+  Future<Either<ServerFailure, List<MoviesModel>>> searchMovieByName(
       {required String keyword}) async {
     try {
       final List<MoviesModel> movies = [];
@@ -81,22 +83,24 @@ class NetworkService {
         },
       );
 
-      for (var movie in incomingMovies.data['results']) {
-        movies.add(MoviesModel.fromJson(movie));
+      for (var item in incomingMovies.data['results']) {
+        final movie = MoviesModel.fromJson(item);
+        if (movie.backdropPath != null) {
+          movies.add(movie);
+        }
       }
+      print(movies.first.backdropPath);
 
-      return movies;
+      return right(movies);
     } catch (error) {
       log('Error fetching search MovieByKeyword: $error');
-      rethrow;
+      return left(ServerFailure(error.toString()));
     }
   }
 
-  //TODO: Add get Movie's Cast
+  //  
 
   //TODO: Add get Movie's Review
-
-  
 }
 
 // Dio Api Service
