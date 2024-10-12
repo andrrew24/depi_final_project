@@ -4,6 +4,8 @@ import 'package:movie_app/config/service_locator/service_locator.dart';
 import 'package:movie_app/config/theme/theme.dart';
 import 'package:movie_app/features/home/views/home.dart';
 
+import 'features/splash_screen/views/SplashScreen.dart';
+
 void main() async {
   // load variables in .env file (placed in the root project folder)
   await dotenv.load(fileName: ".env");
@@ -23,7 +25,11 @@ class MoviesApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
-      home: const Home(),
+      initialRoute: "/splash",
+        routes: {
+          '/splash': (context) => const SplashScreen(durationInSeconds: 5),
+          '/home': (context) => const Home(),
+        }
     );
   }
 }
