@@ -75,13 +75,16 @@ class NetworkService {
 
       for (var item in incomingMovies.data['results']) {
         final movie = MoviesModel.fromJson(item);
+        if (movie.genreIds!.isNotEmpty) {
+          movie.genre = await getGenreName(movie.genreIds![0]);
+        }
         if (movie.backdropPath != null) {
           movies.add(movie);
         }
       }
       return right(movies);
     } catch (error) {
-      log('Error fetching search MovieByKeyword: $error');
+      log('Error fetching search MovieByName: $error');
       return left(ServerFailure(error.toString()));
     }
   }
@@ -140,6 +143,16 @@ class NetworkService {
       log('Error fetching Movie Reviews : $error');
       return left(ServerFailure(error.toString()));
     }
+  }
+
+  Future<String> getGenreName(int genreId) async {
+    var genres = await _dio.get("genre/movie/list");
+    for (var genre in genres.data['genres']) {
+      if (genre['id'] == genreId) {
+        return genre['name'] as String;
+      }
+    }
+    return 'Genre not found';
   }
 }
 
