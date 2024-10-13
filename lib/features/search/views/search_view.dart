@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:movie_app/config/theme/app_styles.dart';
+import 'package:movie_app/features/details/views/details_view.dart';
 import 'package:movie_app/features/search/viewmodels/cubit/search_cubit.dart';
 import 'package:movie_app/features/search/widgets/search_initial_widget.dart';
 import 'package:movie_app/features/search/widgets/search_no_result_widget.dart';
@@ -47,6 +48,14 @@ class SearchView extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return MovieItem(
                           moviesModel: state.movies[index],
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return DetailsView(
+                                    movieID: state.movies[index].id ?? 1);
+                              },
+                            ));
+                          },
                         );
                       },
                     );
