@@ -1,32 +1,22 @@
 import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/config/errors/failure.dart';
+import 'package:movie_app/features/details/models/cast_model/cast_model.dart';
 import 'package:movie_app/features/details/models/movie_details_model/movie_details_model.dart';
+import 'package:movie_app/features/details/models/review_model/review_model.dart';
 import 'package:movie_app/features/home/models/movies_model.dart';
 
 class NetworkService {
   final Dio _dio = Dio();
-  final String _baseUrl = 'https://api.themoviedb.org/3';
+  final String _baseUrl = 'https://api.themoviedb.org/3/';
   final String _apiKey =
       dotenv.env['TMDB_API_KEY'] ?? ''; // Replace with your actual TMDB API key
 
   NetworkService() {
     _dio.options.baseUrl = _baseUrl;
     _dio.options.queryParameters = {'api_key': _apiKey};
-  }
-
-  /// to get Movie Details By its id when user clicks on any movie item
-  Future<MovieDetailsModel> getMovieDetailsById(int id) async {
-    try {
-      final response = await _dio.get('/movie/$id');
-      return MovieDetailsModel.fromJson(response.data);
-    } catch (error) {
-      log('Error fetching movie by ID: $error');
-      rethrow;
-    }
   }
 
   /// to get list of trending movies that appears in the top of home screen
@@ -89,8 +79,6 @@ class NetworkService {
           movies.add(movie);
         }
       }
-      print(movies.first.backdropPath);
-
       return right(movies);
     } catch (error) {
       log('Error fetching search MovieByKeyword: $error');
@@ -98,9 +86,61 @@ class NetworkService {
     }
   }
 
-  //  
+  /// to get Movie Details By its id when user clicks on any movie item
+  Future<Either<ServerFailure, MovieDetailsModel>> getMovieDetailsById(
+      int id) async {
+    try {
+      final response = await _dio.get('/movie/$id');
+      final movieDetails = MovieDetailsModel.fromJson(response.data);
 
-  //TODO: Add get Movie's Review
+      return right(movieDetails);
+    } catch (error) {
+      log('Error fetching movie by ID: $error');
+      return left(ServerFailure(error.toString()));
+    }
+  }
+
+  //to Get Movie's Cast
+  Future<Either<ServerFailure, List<CastModel>>> getMovieCast(
+      int movieID) async {
+    try {
+      final List<CastModel> castList = [];
+
+      final incomingCast = await _dio.get("/movie/$movieID/credits");
+
+      for (var item in incomingCast.data['cast']) {
+        final cast = CastModel.fromJson(item);
+        castList.add(cast);
+      }
+
+      return right(castList);
+    } catch (error) {
+      log('Error fetching Movie Cast : $error');
+      return left(ServerFailure(error.toString()));
+    }
+  }
+
+  //to Get Movie's Reviews
+  Future<Either<ServerFailure, List<ReviewModel>>> getMovieReviews(
+      int movieID) async {
+    try {
+      final List<ReviewModel> reviewsList = [];
+
+      final incomingReviews = await _dio.get("/movie/$movieID/reviews");
+
+      for (var item in incomingReviews.data['results']) {
+        final review = ReviewModel.fromJson(item);
+        if (review.authorDetails!.avatarPath != null) {
+          reviewsList.add(review);
+        }
+      }
+
+      return right(reviewsList);
+    } catch (error) {
+      log('Error fetching Movie Reviews : $error');
+      return left(ServerFailure(error.toString()));
+    }
+  }
 }
 
 // Dio Api Service

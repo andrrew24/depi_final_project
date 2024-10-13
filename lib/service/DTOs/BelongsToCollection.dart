@@ -1,14 +1,17 @@
 import 'dart:convert';
 
 BelongsToCollection belongsToCollectionFromJson(String str) =>
-BelongsToCollection.fromJson(json.decode(str));
-String belongsToCollectionToJson(BelongsToCollection data) => json.encode(data.toJson());
+    BelongsToCollection.fromJson(json.decode(str));
+String belongsToCollectionToJson(BelongsToCollection data) =>
+    json.encode(data.toJson());
+
 class BelongsToCollection {
   BelongsToCollection({
-      this.id, 
-      this.name, 
-      this.posterPath, 
-      this.backdropPath,});
+    this.id,
+    this.name,
+    this.posterPath,
+    this.backdropPath,
+  });
 
   BelongsToCollection.fromJson(dynamic json) {
     id = json['id'];

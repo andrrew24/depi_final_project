@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/config/theme/app_color.dart';
+import 'package:movie_app/features/details/models/movie_details_model/movie_details_model.dart';
 import 'package:movie_app/features/details/widgets/tab_bar/about_movie.dart';
 import 'package:movie_app/features/details/widgets/tab_bar/cast_grid_view.dart';
 import 'package:movie_app/features/details/widgets/tab_bar/reviews_list_view.dart';
 import 'package:movie_app/config/theme/app_styles.dart';
 
 class TabBarCustom extends StatelessWidget {
-  const TabBarCustom({super.key});
+  const TabBarCustom({super.key, required this.model});
+
+  final MovieDetailsModel model;
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3, // Number of tabs
+      length: 3,
       child: Column(
         children: [
           TabBar(
@@ -25,13 +28,15 @@ class TabBarCustom extends StatelessWidget {
               Tab(text: 'Cast'),
             ],
           ),
-          const Expanded(
+          Expanded(
             // Make sure TabBarView is inside Expanded
             child: TabBarView(
               children: [
-                AboutMovie(),
-                ReviewsListView(),
-                CastGridView(),
+                AboutMovie(
+                  about: model.overview ?? "No Overview",
+                ),
+                const ReviewsListView(),
+                const CastGridView(),
               ],
             ),
           ),

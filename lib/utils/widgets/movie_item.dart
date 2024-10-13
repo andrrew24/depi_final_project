@@ -30,9 +30,8 @@ class MovieItem extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: CachedNetworkImage(
-                imageUrl: moviesModel.backdropPath == null
-                    ? AppConstants.kNoImgPreviewLink
-                    : "${AppConstants.kStaticImgLink}${moviesModel.backdropPath}",
+                imageUrl:
+                    "${AppConstants.kStaticImgLink}${moviesModel.posterPath}",
                 fit: BoxFit.fitHeight,
               ),
             ),
