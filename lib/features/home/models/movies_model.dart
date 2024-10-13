@@ -16,8 +16,6 @@ class MoviesModel {
   double? voteAverage;
   int? voteCount;
 
-  
-
   MoviesModel({
     this.backdropPath,
     this.id,

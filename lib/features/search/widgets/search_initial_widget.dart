@@ -18,9 +18,9 @@ class SearchInitialWidget extends StatelessWidget {
           SvgPicture.asset(
             AppAssets.imgNoresults,
           ),
-          Gap(15),
+          const Gap(15),
           ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 300),
+            constraints: const BoxConstraints(maxWidth: 300),
             child: Text(
               "Get a popcorn and start searching now ( ;",
               textAlign: TextAlign.center,
