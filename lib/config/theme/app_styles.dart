@@ -7,6 +7,9 @@ class AppStyles {
   static TextStyle stylePoppinsRegular12() {
     return GoogleFonts.poppins(fontSize: 12);
   }
+  static TextStyle stylePoppinsRegular40() {
+    return GoogleFonts.poppins(fontSize: 40);
+  }
 
   static TextStyle stylePoppinsRegular16() {
     return GoogleFonts.poppins(fontSize: 16);
@@ -54,10 +57,11 @@ class AppStyles {
       fontWeight: FontWeight.w600,
     );
   }
+
   static TextStyle styleMontserratSemiBold16() {
     return GoogleFonts.poppins(
-      fontSize: 12,
-      fontWeight: FontWeight.w600,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
     );
   }
 
@@ -74,5 +78,7 @@ class AppStyles {
     );
   }
 
-  static stylePoppinsRegular15() {}
+  static TextStyle stylePoppinsRegular15() {
+    return GoogleFonts.poppins(fontSize: 15);
+  }
 }

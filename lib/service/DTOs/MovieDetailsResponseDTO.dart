@@ -5,8 +5,11 @@ import 'ProductionCountries.dart';
 import 'SpokenLanguages.dart';
 import 'dart:convert';
 
-MovieDetailsResponseDto movieDetailsResponseDtoFromJson(String str) => MovieDetailsResponseDto.fromJson(json.decode(str));
-String movieDetailsResponseDtoToJson(MovieDetailsResponseDto data) => json.encode(data.toJson());
+MovieDetailsResponseDto movieDetailsResponseDtoFromJson(String str) =>
+    MovieDetailsResponseDto.fromJson(json.decode(str));
+String movieDetailsResponseDtoToJson(MovieDetailsResponseDto data) =>
+    json.encode(data.toJson());
+
 class MovieDetailsResponseDto {
   MovieDetailsResponseDto({
     this.adult,
@@ -214,5 +217,4 @@ class MovieDetailsResponseDto {
     map['vote_count'] = voteCount;
     return map;
   }
-
 }

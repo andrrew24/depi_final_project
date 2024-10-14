@@ -1,18 +1,18 @@
 // Model for Search and Home Feat's
 
 class MoviesModel {
+  String? genre;
+  bool? adult;
   String? backdropPath;
+  List<int>? genreIds;
   int? id;
-  String? title;
+  String? originalLanguage;
   String? originalTitle;
   String? overview;
-  String? posterPath;
-  String? mediaType;
-  bool? adult;
-  String? originalLanguage;
-  List<int>? genreIds;
   double? popularity;
+  String? posterPath;
   String? releaseDate;
+  String? title;
   bool? video;
   double? voteAverage;
   int? voteCount;
@@ -24,7 +24,6 @@ class MoviesModel {
     this.originalTitle,
     this.overview,
     this.posterPath,
-    this.mediaType,
     this.adult,
     this.originalLanguage,
     this.genreIds,
@@ -37,7 +36,7 @@ class MoviesModel {
 
   @override
   String toString() {
-    return 'TrendingMoviesModel(backdropPath: $backdropPath, id: $id, title: $title, originalTitle: $originalTitle, overview: $overview, posterPath: $posterPath, mediaType: $mediaType, adult: $adult, originalLanguage: $originalLanguage, genreIds: $genreIds, popularity: $popularity, releaseDate: $releaseDate, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
+    return 'TrendingMoviesModel(backdropPath: $backdropPath, id: $id, title: $title, originalTitle: $originalTitle, overview: $overview, posterPath: $posterPath, adult: $adult, originalLanguage: $originalLanguage, genreIds: $genreIds, popularity: $popularity, releaseDate: $releaseDate, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
   }
 
   factory MoviesModel.fromJson(Map<String, dynamic> json) {
@@ -48,10 +47,10 @@ class MoviesModel {
       originalTitle: json['original_title'] as String?,
       overview: json['overview'] as String?,
       posterPath: json['poster_path'] as String?,
-      mediaType: json['media_type'] as String?,
       adult: json['adult'] as bool?,
       originalLanguage: json['original_language'] as String?,
-      genreIds: json['genre_ids'] as List<int>?,
+      genreIds:
+          (json['genre_ids'] as List<dynamic>?)?.map((e) => e as int).toList(),
       popularity: (json['popularity'] as num?)?.toDouble(),
       releaseDate: json['release_date'] as String?,
       video: json['video'] as bool?,
@@ -67,7 +66,6 @@ class MoviesModel {
         'original_title': originalTitle,
         'overview': overview,
         'poster_path': posterPath,
-        'media_type': mediaType,
         'adult': adult,
         'original_language': originalLanguage,
         'genre_ids': genreIds,

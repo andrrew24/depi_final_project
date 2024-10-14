@@ -1,13 +1,17 @@
 import 'dart:convert';
 
-ProductionCompanies productionCompaniesFromJson(String str) => ProductionCompanies.fromJson(json.decode(str));
-String productionCompaniesToJson(ProductionCompanies data) => json.encode(data.toJson());
+ProductionCompanies productionCompaniesFromJson(String str) =>
+    ProductionCompanies.fromJson(json.decode(str));
+String productionCompaniesToJson(ProductionCompanies data) =>
+    json.encode(data.toJson());
+
 class ProductionCompanies {
   ProductionCompanies({
-      this.id, 
-      this.logoPath, 
-      this.name, 
-      this.originCountry,});
+    this.id,
+    this.logoPath,
+    this.name,
+    this.originCountry,
+  });
 
   ProductionCompanies.fromJson(dynamic json) {
     id = json['id'];
@@ -19,15 +23,18 @@ class ProductionCompanies {
   String? logoPath;
   String? name;
   String? originCountry;
-ProductionCompanies copyWith({  int? id,
-  String? logoPath,
-  String? name,
-  String? originCountry,
-}) => ProductionCompanies(  id: id ?? this.id,
-  logoPath: logoPath ?? this.logoPath,
-  name: name ?? this.name,
-  originCountry: originCountry ?? this.originCountry,
-);
+  ProductionCompanies copyWith({
+    int? id,
+    String? logoPath,
+    String? name,
+    String? originCountry,
+  }) =>
+      ProductionCompanies(
+        id: id ?? this.id,
+        logoPath: logoPath ?? this.logoPath,
+        name: name ?? this.name,
+        originCountry: originCountry ?? this.originCountry,
+      );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
@@ -36,5 +43,4 @@ ProductionCompanies copyWith({  int? id,
     map['origin_country'] = originCountry;
     return map;
   }
-
 }
