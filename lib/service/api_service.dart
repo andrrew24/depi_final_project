@@ -20,7 +20,7 @@ class NetworkService {
   }
 
   /// to get list of trending movies that appears in the top of home screen
-  Future<List<MoviesModel>> getTrendingMovies() async {
+  Future<Either<ServerFailure, List<MoviesModel>>> getTrendingMovies() async {
     try {
       final List<MoviesModel> movies = [];
       final incomingMovies = await _dio.get('/trending/movie/week');
@@ -29,10 +29,10 @@ class NetworkService {
         movies.add(MoviesModel.fromJson(movie));
       }
 
-      return movies;
+      return right(movies);
     } catch (error) {
       log('Error fetching home TrendingMovies: $error');
-      rethrow;
+      return left(ServerFailure(error.toString()));
     }
   }
 
@@ -42,7 +42,7 @@ class NetworkService {
   /// 2-  top_rated
   /// 3-  now_playing
   /// 4-  popular
-  Future<List<MoviesModel>> getMoviesByCategory(
+  Future<Either<ServerFailure, List<MoviesModel>>> getMoviesByCategory(
       {required String endpoint}) async {
     try {
       final List<MoviesModel> movies = [];
@@ -53,10 +53,10 @@ class NetworkService {
         movies.add(MoviesModel.fromJson(movie));
       }
 
-      return movies;
+      return right(movies);
     } catch (error) {
       log('Error fetching home MoviesByCategory: $error');
-      rethrow;
+      return left(ServerFailure(error.toString()));
     }
   }
 
