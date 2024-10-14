@@ -25,8 +25,11 @@ class NetworkService {
       final List<MoviesModel> movies = [];
       final incomingMovies = await _dio.get('/trending/movie/week');
 
-      for (var movie in incomingMovies.data['results']) {
-        movies.add(MoviesModel.fromJson(movie));
+      for (var item in incomingMovies.data['results']) {
+        final movie = MoviesModel.fromJson(item);
+        if (movie.backdropPath != null) {
+          movies.add(movie);
+        }
       }
 
       return right(movies);
@@ -49,10 +52,12 @@ class NetworkService {
 
       final incomingMovies = await _dio.get('/movie/$endpoint');
 
-      for (var movie in incomingMovies.data['results']) {
-        movies.add(MoviesModel.fromJson(movie));
+      for (var item in incomingMovies.data['results']) {
+        final movie = MoviesModel.fromJson(item);
+        if (movie.backdropPath != null) {
+          movies.add(movie);
+        }
       }
-
       return right(movies);
     } catch (error) {
       log('Error fetching home MoviesByCategory: $error');
