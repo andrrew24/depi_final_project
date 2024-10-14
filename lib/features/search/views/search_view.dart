@@ -61,7 +61,7 @@ class SearchView extends StatelessWidget {
                         },
                       );
                     } else {
-                      return SearchNoResultWidget();
+                      return const SearchNoResultWidget();
                     }
                   } else if (state is SearchLoading) {
                     return const Center(child: CircularProgressIndicator());

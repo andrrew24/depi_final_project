@@ -28,6 +28,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cached_network_image: ^3.4.1
+  carousel_slider: ^5.0.0
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
   dio: ^5.7.0
@@ -40,7 +41,7 @@ dependencies:
   gap: ^3.0.1
   get_it: ^8.0.0
   google_fonts: ^6.2.1
-  lottie: ^3.1.2 # lottie files for splash screen
+  lottie: ^3.1.2
 
 dev_dependencies:
   flutter_lints: ^5.0.0
