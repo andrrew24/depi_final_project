@@ -46,7 +46,7 @@ class MovieItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: 200),
+                  constraints: const BoxConstraints(maxWidth: 200),
                   child: Text(
                     moviesModel.title ?? "No name",
                     style: AppStyles.stylePoppinsRegular16(),
