@@ -12,8 +12,6 @@ void main() async {
   
   //setup service locator for dependency inject
    setupServiceLocator();
-
-
   runApp(const MoviesApp());
 }
 
