@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:movie_app/config/theme/app_styles.dart';
 
 class SplashScreen extends StatefulWidget {
   final int durationInSeconds;
@@ -11,11 +12,9 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
-    // Add any initialization logic here
     _navigateToHome();
   }
 
@@ -31,19 +30,18 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Movies App",
-              style: TextStyle(fontSize: 40),),
-            SizedBox(
-                width: 150,
-                height: 150,
-                child: Lottie.asset('assets/lottie/lottie-movie-splash.json'),
+            Text(
+              "Movies App",
+              style: AppStyles.stylePoppinsRegular40(),
             ),
-            SizedBox(height: 20),
-            CircularProgressIndicator(),
+            SizedBox(
+              width: 150,
+              height: 150,
+              child: Lottie.asset('assets/lottie/lottie-movie-splash.json'),
+            ),
           ],
         ),
       ),
     );
   }
 }
-

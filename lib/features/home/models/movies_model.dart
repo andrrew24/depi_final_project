@@ -1,6 +1,7 @@
 // Model for Search and Home Feat's
 
 class MoviesModel {
+  String? genre;
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;

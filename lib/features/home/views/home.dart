@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
       providers: [
         BlocProvider(
           create: (context) => SearchCubit(),
-        )
+        ),
       ],
       child: Scaffold(
         body: views[_selectedIndex],
