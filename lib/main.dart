@@ -14,6 +14,7 @@ void main() async {
    setupServiceLocator();
 
 
+
   runApp(const MoviesApp());
 }
 
