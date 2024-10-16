@@ -1,11 +1,7 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:movie_app/config/theme/app_styles.dart';
-import 'package:movie_app/features/home/viewmodels/trending_cubit/trending_cubit.dart';
 import 'package:movie_app/features/home/widgets/category_tabbar_view.dart';
-import 'package:movie_app/features/home/widgets/simple_movie_item.dart';
 import 'package:movie_app/features/home/widgets/trending_movies_slider.dart';
 import 'package:movie_app/utils/widgets/textfield_custom.dart';
 
