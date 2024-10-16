@@ -48,10 +48,16 @@ class CastGridView extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        state.castList[index].name ?? "No Actor Name",
-                        style: AppStyles.stylePoppinsMedium12(),
-                        textAlign: TextAlign.center,
+                      Flexible(
+                        fit: FlexFit.loose,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            state.castList[index].name ?? "No Actor Name",
+                            style: AppStyles.stylePoppinsMedium12(),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
                       ),
                     ],
                   ),

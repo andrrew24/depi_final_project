@@ -7,6 +7,9 @@ class AppStyles {
   static TextStyle stylePoppinsRegular12() {
     return GoogleFonts.poppins(fontSize: 12);
   }
+  static TextStyle stylePoppinsRegular40() {
+    return GoogleFonts.poppins(fontSize: 40);
+  }
 
   static TextStyle stylePoppinsRegular16() {
     return GoogleFonts.poppins(fontSize: 16);
