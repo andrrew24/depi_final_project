@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
   // List of Navigation Bar widgets
 
   final List<Widget> views = [
-    const HomeView(),
+    HomeView(),
     const SearchView(),
     const WatchListView(),
   ];
