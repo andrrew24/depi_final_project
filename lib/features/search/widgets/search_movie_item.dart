@@ -77,7 +77,7 @@ class MovieItem extends StatelessWidget {
                     ),
                     const Gap(5),
                     Text(
-                      moviesModel.genre ?? " ",
+                       moviesModel.genre ?? "No Genre",
                       style: AppStyles.stylePoppinsRegular12(),
                     )
                   ],

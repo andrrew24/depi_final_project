@@ -1,6 +1,10 @@
 class AppConstants {
   AppConstants._();
 
+  //watchlist hive box name
+
+  static const kWatchlistBox = "watchlist";
+
   // Constants of Movie Categoires
   static const kNowPlayingCategory = "now_playing";
   static const kTopRatedCategory = "top_rated";
