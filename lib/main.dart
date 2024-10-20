@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -22,12 +21,6 @@ void main() async {
   await Hive.openBox(AppConstants.kWatchlistBox);
   // load variables in .env file (placed in the root project folder)
   await dotenv.load(fileName: ".env");
-<<<<<<< HEAD
-
-  await Firebase.initializeApp();
-
-=======
->>>>>>> 013dbf980e8d40fb19efaa89dcc36b87cf3a33e4
   //setup service locator for dependency inject
   setupServiceLocator();
 
@@ -39,16 +32,6 @@ class MoviesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.darkTheme,
-        initialRoute: "/splash",
-        routes: {
-          '/splash': (context) => const SplashScreen(durationInSeconds: 5),
-          '/home': (context) => const Home(),
-        });
-=======
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -71,6 +54,5 @@ class MoviesApp extends StatelessWidget {
             '/home': (context) => const Home(),
           }),
     );
->>>>>>> 013dbf980e8d40fb19efaa89dcc36b87cf3a33e4
   }
 }

@@ -43,11 +43,8 @@ dependencies:
   gap: ^3.0.1
   get_it: ^8.0.0
   google_fonts: ^6.2.1
-<<<<<<< HEAD
-=======
   hive: ^2.2.3
   hive_flutter: ^1.1.0
->>>>>>> 013dbf980e8d40fb19efaa89dcc36b87cf3a33e4
   lottie: ^3.1.2
 
 dev_dependencies:
