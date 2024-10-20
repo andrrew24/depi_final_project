@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:movie_app/config/service_locator/service_locator.dart';
-import 'package:movie_app/features/home/models/movies_model.dart';
+import 'package:movie_app/features/details/models/movie_details_model/movie_details_model.dart';
 import 'package:movie_app/service/api_service.dart';
 import 'package:movie_app/service/local_data_source.dart';
 

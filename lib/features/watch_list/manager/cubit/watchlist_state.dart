@@ -14,7 +14,7 @@ final class WatchlistFailure extends WatchlistState {
 }
 
 final class WatchlistSuccess extends WatchlistState {
-  final List<MoviesModel> moviesList;
+  final List<MovieDetailsModel> moviesList;
 
   WatchlistSuccess({required this.moviesList});
 }

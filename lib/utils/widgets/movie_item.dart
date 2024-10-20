@@ -11,11 +11,11 @@ class MovieItem extends StatelessWidget {
   const MovieItem({
     super.key,
     required this.moviesModel,
-    required this.onTap,
+    this.onTap,
   });
 
   final MoviesModel moviesModel;
-  final void Function() onTap;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +77,7 @@ class MovieItem extends StatelessWidget {
                     ),
                     const Gap(5),
                     Text(
-                       moviesModel.genre ?? "No Genre",
+                      moviesModel.genre ?? "No Genre",
                       style: AppStyles.stylePoppinsRegular12(),
                     )
                   ],
