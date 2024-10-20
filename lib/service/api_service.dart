@@ -162,20 +162,21 @@ class NetworkService {
     return 'Genre not found';
   }
 
-  Future<Either<ServerFailure, List<MoviesModel>>>
+  Future<Either<ServerFailure, List<MovieDetailsModel>>>
       getAllWatchlistMovies() async {
     try {
       // get watchListmoviesIDs from localdatasource
       final watchListmoviesIDs = sl<LocalDataSource>().getWatchlistMoviesIds();
-      List<MoviesModel> watchListmoviesList = [];
-      // get movie by id & add it to movies list
+      
+      //list of wathclist movies
+      List<MovieDetailsModel> watchListmoviesList = [];
+     
+     // get movie by id & add it to movies list
       for (int id in watchListmoviesIDs.reversed) {
         final response = await _dio.get('/movie/$id');
-        final movie = MoviesModel.fromJson(response.data);
-        if (movie.genreIds != null) {
-          if (movie.genreIds!.isNotEmpty) {
-            movie.genre = await getGenreName(movie.genreIds![0]);
-          }
+        final movie = MovieDetailsModel.fromJson(response.data);
+        if (movie.genres!.isNotEmpty) {
+          movie.genre = await getGenreName(movie.genres![0].id!);
         }
         watchListmoviesList.add(movie);
       }
