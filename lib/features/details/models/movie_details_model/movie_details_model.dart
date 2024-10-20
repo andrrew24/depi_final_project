@@ -1,3 +1,5 @@
+import 'package:movie_app/features/home/models/movies_model.dart';
+
 import 'belongs_to_collection.dart';
 import 'genre.dart';
 import 'production_company.dart';
@@ -5,6 +7,7 @@ import 'production_country.dart';
 import 'spoken_language.dart';
 
 class MovieDetailsModel {
+  String? genre;
   bool? adult;
   String? backdropPath;
   BelongsToCollection? belongsToCollection;
@@ -140,4 +143,27 @@ class MovieDetailsModel {
         'vote_average': voteAverage,
         'vote_count': voteCount,
       };
+}
+
+
+extension MovieDetailsToMoviesModel on MovieDetailsModel {
+  MoviesModel toMoviesModel() {
+    return MoviesModel(
+      genre: genre,
+      adult: adult,
+      backdropPath: backdropPath,
+      genreIds: genres?.map((genre) => genre.id).whereType<int>().toList(), // Assuming Genre has an id field
+      id: id,
+      originalLanguage: originalLanguage,
+      originalTitle: originalTitle,
+      overview: overview,
+      popularity: popularity,
+      posterPath: posterPath,
+      releaseDate: releaseDate,
+      title: title,
+      video: video,
+      voteAverage: voteAverage,
+      voteCount: voteCount,
+    );
+  }
 }

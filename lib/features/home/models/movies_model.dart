@@ -18,6 +18,7 @@ class MoviesModel {
   int? voteCount;
 
   MoviesModel({
+    this.genre,
     this.backdropPath,
     this.id,
     this.title,

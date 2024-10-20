@@ -3,10 +3,12 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/config/errors/failure.dart';
+import 'package:movie_app/config/service_locator/service_locator.dart';
 import 'package:movie_app/features/details/models/cast_model/cast_model.dart';
 import 'package:movie_app/features/details/models/movie_details_model/movie_details_model.dart';
 import 'package:movie_app/features/details/models/review_model/review_model.dart';
 import 'package:movie_app/features/home/models/movies_model.dart';
+import 'package:movie_app/service/local_data_source.dart';
 
 class NetworkService {
   final Dio _dio = Dio();
@@ -33,9 +35,9 @@ class NetworkService {
       }
 
       return right(movies);
-    } catch (error) {
+    } on DioException catch (error) {
       log('Error fetching home TrendingMovies: $error');
-      return left(ServerFailure(error.toString()));
+      return left(ServerFailure.fromDioError(error));
     }
   }
 
@@ -59,9 +61,9 @@ class NetworkService {
         }
       }
       return right(movies);
-    } catch (error) {
-      log('Error fetching home MoviesByCategory: $error');
-      return left(ServerFailure(error.toString()));
+    } on DioException catch (error) {
+      log('Error fetching home TrendingMovies: $error');
+      return left(ServerFailure.fromDioError(error));
     }
   }
 
@@ -88,9 +90,9 @@ class NetworkService {
         }
       }
       return right(movies);
-    } catch (error) {
-      log('Error fetching search MovieByName: $error');
-      return left(ServerFailure(error.toString()));
+    } on DioException catch (error) {
+      log('Error fetching home TrendingMovies: $error');
+      return left(ServerFailure.fromDioError(error));
     }
   }
 
@@ -102,9 +104,9 @@ class NetworkService {
       final movieDetails = MovieDetailsModel.fromJson(response.data);
 
       return right(movieDetails);
-    } catch (error) {
-      log('Error fetching movie by ID: $error');
-      return left(ServerFailure(error.toString()));
+    } on DioException catch (error) {
+      log('Error fetching home TrendingMovies: $error');
+      return left(ServerFailure.fromDioError(error));
     }
   }
 
@@ -122,9 +124,9 @@ class NetworkService {
       }
 
       return right(castList);
-    } catch (error) {
-      log('Error fetching Movie Cast : $error');
-      return left(ServerFailure(error.toString()));
+    } on DioException catch (error) {
+      log('Error fetching home TrendingMovies: $error');
+      return left(ServerFailure.fromDioError(error));
     }
   }
 
@@ -144,9 +146,9 @@ class NetworkService {
       }
 
       return right(reviewsList);
-    } catch (error) {
-      log('Error fetching Movie Reviews : $error');
-      return left(ServerFailure(error.toString()));
+    } on DioException catch (error) {
+      log('Error fetching home TrendingMovies: $error');
+      return left(ServerFailure.fromDioError(error));
     }
   }
 
@@ -158,6 +160,31 @@ class NetworkService {
       }
     }
     return 'Genre not found';
+  }
+
+  Future<Either<ServerFailure, List<MovieDetailsModel>>>
+      getAllWatchlistMovies() async {
+    try {
+      // get watchListmoviesIDs from localdatasource
+      final watchListmoviesIDs = sl<LocalDataSource>().getWatchlistMoviesIds();
+      
+      //list of wathclist movies
+      List<MovieDetailsModel> watchListmoviesList = [];
+     
+     // get movie by id & add it to movies list
+      for (int id in watchListmoviesIDs.reversed) {
+        final response = await _dio.get('/movie/$id');
+        final movie = MovieDetailsModel.fromJson(response.data);
+        if (movie.genres!.isNotEmpty) {
+          movie.genre = await getGenreName(movie.genres![0].id!);
+        }
+        watchListmoviesList.add(movie);
+      }
+      return right(watchListmoviesList);
+    } on DioException catch (error) {
+      log('Error fetching home getAllWatchlistMovies: $error');
+      return left(ServerFailure.fromDioError(error));
+    }
   }
 }
 

@@ -18,7 +18,7 @@ class SimpleMovieItem extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
-            return DetailsView(movieID: model.id!);
+            return DetailsView(movieId: model.id!);
           },
         ));
       },

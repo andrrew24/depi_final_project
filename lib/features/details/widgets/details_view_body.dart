@@ -69,7 +69,7 @@ class MovieDetailsWidget extends StatelessWidget {
               // Rating Widget
               Positioned(
                 right: 10,
-                bottom: 15,
+                bottom: 20,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: BackdropFilter(
@@ -97,7 +97,7 @@ class MovieDetailsWidget extends StatelessWidget {
               // Details Body
               Positioned(
                 bottom: -150,
-                left: 10,
+                left: 0,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
