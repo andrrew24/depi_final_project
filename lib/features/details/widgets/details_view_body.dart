@@ -13,6 +13,8 @@ import 'package:movie_app/features/details/models/movie_details_model/movie_deta
 import 'package:movie_app/features/details/viewmodels/movie_details_cubit/movie_details_cubit.dart';
 import 'package:movie_app/features/details/widgets/details_section.dart';
 import 'package:movie_app/features/details/widgets/tab_bar/tab_bar.dart';
+import 'package:movie_app/features/search/views/search_view.dart';
+import 'package:movie_app/utils/widgets/myerror_widget.dart';
 
 class DetailsViewBody extends StatelessWidget {
   const DetailsViewBody({super.key});
@@ -24,14 +26,14 @@ class DetailsViewBody extends StatelessWidget {
           return const Center(
             child: CircularProgressIndicator(),
           );
+        } else if (state is MovieDetailsFailure) {
+          return MyErrorWidget(errorMessage: state.errorMessage);
         } else if (state is MovieDetailsSuccess) {
           return MovieDetailsWidget(
             model: state.movieDetailsModel,
           );
         }
-        return const Center(
-          child: Text("There is Unknown Error"),
-        );
+        return SizedBox();
       },
     );
   }

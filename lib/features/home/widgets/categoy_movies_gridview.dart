@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/features/home/viewmodels/categories_cubit/categories_cubit.dart';
 import 'package:movie_app/features/home/widgets/simple_movie_item.dart';
+import 'package:movie_app/utils/widgets/myerror_widget.dart';
 
 class CategoryMoviesGridView extends StatefulWidget {
   const CategoryMoviesGridView({
@@ -32,9 +33,7 @@ class _CategoryMoviesGridViewState extends State<CategoryMoviesGridView> {
             child: CircularProgressIndicator(),
           );
         } else if (state is CategoriesFailure) {
-          return Center(
-            child: Text(state.errorMessage),
-          );
+          return MyErrorWidget(errorMessage: state.errorMessage);
         } else if (state is CategoriesSuccess) {
           return GridView.builder(
             padding:
