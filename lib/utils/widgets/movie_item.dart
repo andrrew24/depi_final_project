@@ -46,10 +46,14 @@ class MovieItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 200),
-                  child: Text(
-                    moviesModel.title ?? "No name",
-                    style: AppStyles.stylePoppinsRegular16(),
+                  constraints: const BoxConstraints(maxWidth: 150),
+                  child: Flexible(
+                    fit: FlexFit.loose,
+                    child: Text(
+                      moviesModel.title ?? "No name",
+                      maxLines: 2,
+                      style: AppStyles.stylePoppinsRegular16(),
+                    ),
                   ),
                 ),
                 const Gap(14),
@@ -93,7 +97,9 @@ class MovieItem extends StatelessWidget {
                       ),
                       const Gap(5),
                       Text(
-                        moviesModel.releaseDate ?? "NO Date",
+                        moviesModel.releaseDate != null
+                            ? moviesModel.releaseDate!.substring(0, 4)
+                            : "No Date",
                         style: AppStyles.stylePoppinsRegular12(),
                       )
                     ],

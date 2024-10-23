@@ -7,14 +7,17 @@ class CustomTextfield extends StatelessWidget {
     super.key,
     required this.textEditingController,
     this.onSubmit,
+    required this.readOnly,
   });
 
   final TextEditingController textEditingController;
+  final bool readOnly;
   final Function(String)? onSubmit;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      readOnly: readOnly,
       onSubmitted: onSubmit,
       controller: textEditingController,
       cursorColor: Colors.white,

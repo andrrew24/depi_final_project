@@ -26,6 +26,7 @@ class HomeView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: CustomTextfield(
+                  readOnly: true,
                   textEditingController: TextEditingController()),
             ),
             const Gap(24),

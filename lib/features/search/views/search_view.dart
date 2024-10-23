@@ -7,6 +7,7 @@ import 'package:movie_app/features/search/widgets/search_initial_widget.dart';
 import 'package:movie_app/features/search/widgets/search_movie_list_view.dart';
 import 'package:movie_app/features/search/widgets/search_no_result_widget.dart';
 import 'package:movie_app/utils/widgets/basic_app_bar.dart';
+import 'package:movie_app/utils/widgets/myerror_widget.dart';
 import 'package:movie_app/utils/widgets/textfield_custom.dart';
 
 class SearchView extends StatelessWidget {
@@ -27,6 +28,7 @@ class SearchView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: CustomTextfield(
+                readOnly: false,
                 textEditingController: TextEditingController(),
                 onSubmit: (value) {
                   BlocProvider.of<SearchCubit>(context)
@@ -49,7 +51,9 @@ class SearchView extends StatelessWidget {
                   } else if (state is SearchLoading) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (state is SearchFailure) {
-                    return const SearchNoResultWidget();
+                    return MyErrorWidget(
+                      errorMessage: state.errorMessage,
+                    );
                   } else if (state is SearchInitial) {
                     return const SearchInitialWidget();
                   }
@@ -61,3 +65,4 @@ class SearchView extends StatelessWidget {
         ));
   }
 }
+

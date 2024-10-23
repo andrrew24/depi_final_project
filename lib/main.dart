@@ -43,7 +43,6 @@ class MoviesApp extends StatelessWidget {
         BlocProvider(
           create: (context) => CategoriesCubit(),
         ),
-
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

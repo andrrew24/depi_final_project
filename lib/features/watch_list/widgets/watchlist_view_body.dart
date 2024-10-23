@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -8,6 +10,7 @@ import 'package:movie_app/config/theme/app_styles.dart';
 import 'package:movie_app/features/details/models/movie_details_model/movie_details_model.dart';
 import 'package:movie_app/features/watch_list/manager/cubit/watchlist_cubit.dart';
 import 'package:movie_app/utils/widgets/movie_item.dart';
+import 'package:movie_app/utils/widgets/myerror_widget.dart';
 
 class WatchlistViewBody extends StatelessWidget {
   const WatchlistViewBody({super.key});
@@ -23,9 +26,7 @@ class WatchlistViewBody extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is WatchlistFailure) {
-            return Center(
-              child: Text(state.errorMessage),
-            );
+            return MyErrorWidget(errorMessage: state.errorMessage);
           } else if (state is WatchlistSuccess) {
             if (state.moviesList.isNotEmpty) {
               return ListView.separated(

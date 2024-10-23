@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/config/constants/app_constants.dart';
 import 'package:movie_app/config/theme/app_styles.dart';
 import 'package:movie_app/features/details/viewmodels/review_cubit/review_cubit.dart';
+import 'package:movie_app/utils/widgets/myerror_widget.dart';
 
 class ReviewsListView extends StatelessWidget {
   const ReviewsListView({super.key});
@@ -17,9 +18,7 @@ class ReviewsListView extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (state is ReviewFailure) {
-          return Center(
-            child: Text(state.errorMessage),
-          );
+          return MyErrorWidget(errorMessage: state.errorMessage);
         } else if (state is ReviewSuccess) {
           return SingleChildScrollView(
             child: ListView.builder(
