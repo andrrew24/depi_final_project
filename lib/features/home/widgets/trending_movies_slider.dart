@@ -6,6 +6,7 @@ import 'package:movie_app/features/home/widgets/simple_movie_item.dart';
 import 'package:movie_app/utils/widgets/movie_item.dart';
 import 'package:movie_app/utils/widgets/myerror_widget.dart';
 
+
 class TrendingMoviesSlider extends StatelessWidget {
   const TrendingMoviesSlider({
     super.key,

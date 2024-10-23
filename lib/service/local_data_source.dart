@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'package:hive_flutter/adapters.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movie_app/config/constants/app_constants.dart';
 
 class LocalDataSource {
